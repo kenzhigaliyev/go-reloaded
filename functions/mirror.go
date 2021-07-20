@@ -1,3 +1,5 @@
+package functions
+
 // package main
 
 // import (
@@ -25,7 +27,7 @@
 // 			letters = append(letters, ' ')
 // 		}
 // 	}
-// 	length := len(vowels) - 1
+// 	length := len(vowels) - 1s
 // 	for i := 0; i < len(letters); i++ {
 // 		if letters[i] == 'A' || letters[i] == 'a' || letters[i] == 'E' || letters[i] == 'e' || letters[i] == 'I' || letters[i] == 'i' || letters[i] == 'O' || letters[i] == 'o' || letters[i] == 'U' || letters[i] == 'u' {
 // 			z01.PrintRune(vowels[length])

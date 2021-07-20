@@ -1,10 +1,5 @@
 package functions
 
-type NodeI struct {
-	Data int
-	Next *NodeI
-}
-
 func SortListInsert(l *NodeI, data_ref int) *NodeI {
 	// PrintList(l)
 	new := &NodeI{Data: data_ref}
