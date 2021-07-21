@@ -1,5 +1,9 @@
 package functions
 
+import (
+	"fmt"
+)
+
 type TreeNode struct {
 	Left, Right, Parent *TreeNode
 	Data                string
@@ -48,16 +52,6 @@ func BTreeApplyPreorder(root *TreeNode, f func(...interface{}) (int, error)) {
 }
 
 func BTreeSearchItem(root *TreeNode, elem string) *TreeNode {
-	// if root == nil {
-	// 	return root
-	// }
-	// if root.Data > elem {
-	// 	return BTreeSearchItem(root.Left, elem)
-	// } else if root.Data < elem {
-	// 	return BTreeSearchItem(root.Right, elem)
-	// } else {
-	// 	return root
-	// }
 	if root == nil {
 		return root
 	}
@@ -69,4 +63,13 @@ func BTreeSearchItem(root *TreeNode, elem string) *TreeNode {
 		return BTreeSearchItem(root.Left, elem)
 	}
 	return BTreeSearchItem(root.Right, elem)
+}
+
+func PrintTree(root *TreeNode) {
+	if root == nil {
+		return
+	}
+	fmt.Println(root.Data)
+	PrintTree(root.Left)
+	PrintTree(root.Right)
 }
