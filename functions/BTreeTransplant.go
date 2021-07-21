@@ -1,35 +1,25 @@
 package functions
 
-import (
-	"fmt"
-)
-
 func BTreeTransplant(root, node, rplc *TreeNode) *TreeNode {
-	// if root == nil {
-	// 	return root
-	// }
-	// if root.Data == node.Data {
-	// 	root.Data = rplc.Data
-	// 	return root
-	// }
-	// if root.Data > node.Data {
-	// 	return BTreeTransplant(root.Left, node, rplc)
-	// }
-	// return BTreeTransplant(root.Right, node, rplc)
-
-	find := BTreeSearchItem(root, node.Data)
-	fmt.Println(find.Data)
-	Previous := find
-	if find.Parent != nil {
-		Previous = find.Parent
+	if root == nil {
+		return root
 	}
-	fmt.Println(Previous.Data)
-	if Previous.Data < find.Data {
-		find.Parent.Right = rplc
+	if root.Data > node.Data {
+		if root.Left.Data == node.Data {
+			root.Left = rplc
+			rplc.Parent = root
+		} else {
+			BTreeTransplant(root.Left, node, rplc)
+		}
+	} else if root.Data < node.Data {
+		if root.Right.Data == node.Data {
+			root.Right = rplc
+			rplc.Parent = root
+		} else {
+			BTreeTransplant(root.Right, node, rplc)
+		}
 	} else {
-		find.Parent.Left = rplc
+		return rplc
 	}
-	rplc.Parent = Previous
 	return root
-
 }

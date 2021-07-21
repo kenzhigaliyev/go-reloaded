@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"student/functions"
+	"functions/functions"
 )
 
 func PrintList(l *functions.List) {
@@ -138,12 +138,31 @@ func main() {
 	// }
 
 	//BTreeTransplant
+	// root := &functions.TreeNode{Data: "4"}
+	// functions.BTreeInsertData(root, "1")
+	// functions.BTreeInsertData(root, "7")
+	// functions.BTreeInsertData(root, "5")
+	// node := functions.BTreeSearchItem(root, "1")
+	// replacement := &functions.TreeNode{Data: "3"}
+	// root = functions.BTreeTransplant(root, node, replacement)
+	// functions.BTreeApplyInorder(root, fmt.Println)
+
+	//BTreeApplyByLevel
+	// root := &functions.TreeNode{Data: "4"}
+	// functions.BTreeInsertData(root, "1")
+	// functions.BTreeInsertData(root, "7")
+	// functions.BTreeInsertData(root, "5")
+	// functions.BTreeApplyByLevel(root, fmt.Println)
+
+	//BTreeDeleteNode
 	root := &functions.TreeNode{Data: "4"}
 	functions.BTreeInsertData(root, "1")
 	functions.BTreeInsertData(root, "7")
 	functions.BTreeInsertData(root, "5")
-	node := functions.BTreeSearchItem(root, "1")
-	replacement := &functions.TreeNode{Data: "3"}
-	root = functions.BTreeTransplant(root, node, replacement)
+	node := functions.BTreeSearchItem(root, "4")
+	fmt.Println("Before delete:")
+	functions.BTreeApplyInorder(root, fmt.Println)
+	root = functions.BTreeDeleteNode(root, node)
+	fmt.Println("After delete:")
 	functions.BTreeApplyInorder(root, fmt.Println)
 }
