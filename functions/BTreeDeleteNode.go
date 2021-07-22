@@ -1,24 +1,6 @@
 package functions
 
 func BTreeDeleteNode(root, node *TreeNode) *TreeNode {
-	// if root == nil {
-	// 	return nil
-	// } else if root.Data > node.Data {
-	// 	BTreeDeleteNode(root.Left, node)
-	// } else if root.Data < node.Data {
-	// 	BTreeDeleteNode(root.Right, node)
-	// } else {
-	// 	if root.Left == nil {
-	// 		return root.Right
-	// 	} else if root.Right == nil {
-	// 		return root.Left
-	// 	}
-	// 	result := &TreeNode{}
-	// 	result = FindMin(root.Right)
-	// 	root.Right = BTreeDeleteNode(root.Right, result)
-	// }
-	// return root
-
 	if node == nil {
 		return root
 	}
@@ -28,18 +10,18 @@ func BTreeDeleteNode(root, node *TreeNode) *TreeNode {
 		root.Right = BTreeDeleteNode(root.Right, node)
 	} else {
 		if root.Left == nil {
-			temp := root.Right
+			new := root.Right
 			root = nil
-			return temp
+			return new
 		} else if root.Right == nil {
-			temp := root.Left
+			new := root.Left
 			root = nil
-			return temp
+			return new
 		} else {
-			temp := BTreeMin(root.Right)
+			new := BTreeMin(root.Right)
 
-			root.Data = temp.Data
-			root.Right = BTreeDeleteNode(root.Right, temp)
+			root.Data = new.Data
+			root.Right = BTreeDeleteNode(root.Right, new)
 		}
 	}
 	return root
@@ -53,14 +35,3 @@ func BTreeMin(root *TreeNode) *TreeNode {
 
 	return BTreeMin(root.Left)
 }
-
-// func FindMin(root *TreeNode) *TreeNode {
-// 	min := root
-// 	if min == nil {
-// 		return min
-// 	}
-// 	for min != nil {
-// 		min = min.Left
-// 	}
-// 	return min
-// }

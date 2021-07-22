@@ -74,16 +74,57 @@ func main() {
 	// functions.ListPushBackNodeL(link, "How")
 	// functions.ListPushBackNodeL(link, 1)
 	// NodeIrintList(link)
+	// var str = []string{}
+	// new := ""
+	// check := ""
+	// length := len(sep)
+	// separ := false
+	// count := 0
+	// for index, char := range s {
+	// 	if char == 'H' {
+	// 		for index1, val := range s[index:(length + index)] {
+	// 			if index1 == (length - 1) {
+	// 				check = check + string(val)
+	// 				if check == sep {
+	// 					check = ""
+	// 					separ = true
+	// 					if len(new) > 0 {
+	// 						str = append(str, new)
+	// 					}
+	// 					new = ""
+	// 					break
+	// 				} else {
+	// 					check = ""
+	// 					separ = false
+	// 					new = new + string(char)
+	// 					break
+	// 				}
+	// 				break
+	// 			} else {
+	// 				check = check + string(val)
+	// 			}
+	// 		}
+	// 	} else if separ == true {
+	// 		count++
+	// 		if count == (length - 1) {
+	// 			separ = false
+	// 			count = 0
+	// 		}
+	// 	} else if index == (len(s) - 1) {
+	// 		new = new + string(char)
+	// 		str = append(str, new)
+	// 	} else {
+	// 		new = new + string(char)
 
-	//BTreeTransplant
-	// root := &TreeNode{Data: "4"}
-	// functions.BTreeInsertData(root, "1")
-	// functions.BTreeInsertData(root, "7")
-	// functions.BTreeInsertData(root, "5")
+	// 	}
+	// }
+	// return str"5")
 	// node := functions.BTreeSearchItem(root, "1")
 	// replacement := &TreeNode{Data: "3"}
-	// root = functions.BTreeTransplant(root, node, replacement)
-	// functions.BTreeApplyInorder(root, fmt.Println)
+	// root = functions.BTreeTransplanttData(root, "1")
+	// functions.BTreeInsertData(root, "7")
+	// functions.BTreeInsertData(root, "5")
+	// fmt.Println(root, fmt.Println)
 	// }
 
 	//BTreeInsertData
@@ -125,17 +166,7 @@ func main() {
 
 	// fmt.Print("Parent of selected item -> ")
 	// if selected.Parent != nil {
-	// 	fmt.Println(selected.Parent.Data)
-	// } else {
-	// 	fmt.Println("nil")
-	// }
-
-	// fmt.Print("Left child of selected item -> ")
-	// if selected.Left != nil {
-	// 	fmt.Println(selected.Left.Data)
-	// } else {
-	// 	fmt.Println("nil")
-	// }
+	// 	fmt.Println(selectefunctions
 
 	// fmt.Print("Right child of selected item -> ")
 	// if selected.Right != nil {
@@ -162,14 +193,15 @@ func main() {
 	// functions.BTreeApplyByLevel(root, fmt.Println)
 
 	//BTreeDeleteNode
-	root := &functions.TreeNode{Data: "4"}
-	functions.BTreeInsertData(root, "1")
-	functions.BTreeInsertData(root, "7")
-	functions.BTreeInsertData(root, "5")
-	node := functions.BTreeSearchItem(root, "4")
-	fmt.Println("Before delete:")
-	functions.BTreeApplyInorder(root, fmt.Println)
-	root = functions.BTreeDeleteNode(root, node)
-	fmt.Println("After delete:")
-	functions.BTreeApplyInorder(root, fmt.Println)
+	// root := &functions.TreeNode{Data: "4"}
+	// functions.BTreeInsertData(root, "1")
+	// functions.BTreeInsertData(root, "7")
+	// functions.BTreeInsertData(root, "5")
+	// node := functions.BTrfunctionsDeleteNode(root, node)
+	// fmt.Println("After delete:")
+	// functions.BTreeApplyInorder(root, fmt.Println)
+
+	//Split
+	// 	s := "HAHAHelloHAHAHAHAhowHAareHAyou?HAHA"
+	// 	fmt.Println(functions.Split(s, "HA"))
 }
