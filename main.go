@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"student/functions"
-	// "functions/functions"
 )
 
 func PrintList(l *functions.List) {
@@ -18,10 +17,25 @@ func PrintList(l *functions.List) {
 
 func main() {
 	//AdvancedSort
-	// result := []string{"The", "computing", "consisted", "device", "each", "earliest", "fingers", "five", "hand", "of", "of", "the", "undoubtedly"}
-	// functions.AdvancedSortWordArr(result, functions.Compare)
+	result1 := []string{"The", "earliest", "computing", "device", "undoubtedly", "consisted", "of", "the", "five", "fingers", "of", "each", "hand"}
+	functions.AdvancedSortWordArr(result1, functions.Compare)
+	result2 := []string{"The", "word", "digital", "comesfrom", "\"digits\"", "or", "fingers"}
+	functions.AdvancedSortWordArr(result2, functions.Compare)
+	result3 := []string{"a", "A", "1", "b", "B", "2", "c", "C", "3"}
+	functions.AdvancedSortWordArr(result3, functions.Compare)
+	result4 := []string{"The", "computing", "consisted", "device", "each", "earliest", "fingers", "five", "hand", "of", "of", "the", "undoubtedly"}
+	functions.AdvancedSortWordArr(result4, functions.Compare)
+	result5 := []string{"\"digits\"", "The", "comesfrom", "digital", "fingers", "or", "word"}
+	functions.AdvancedSortWordArr(result5, functions.Compare)
+	result6 := []string{"1", "2", "3", "A", "B", "C", "a", "b", "c"}
+	functions.AdvancedSortWordArr(result6, functions.Compare)
 
-	// fmt.Println(result)
+	fmt.Println(result1)
+	fmt.Println(result2)
+	fmt.Println(result3)
+	fmt.Println(result4)
+	fmt.Println(result5)
+	fmt.Println(result6)
 
 	// nbits := functions.ActiveBits(7)
 	// fmt.Println(nbits)
@@ -204,4 +218,70 @@ func main() {
 	//Split
 	// 	s := "HAHAHelloHAHAHAHAhowHAareHAyou?HAHA"
 	// 	fmt.Println(functions.Split(s, "HA"))
+
+	//Atoi
+	// fmt.Println(functions.Atoi("12345"))
+	// fmt.Println(functions.Atoi("0000000012345"))
+	// fmt.Println(functions.Atoi("012 345"))
+	// fmt.Println(functions.Atoi("Hello World!"))
+	// fmt.Println(functions.Atoi("+1234"))
+	// fmt.Println(functions.Atoi("-1234"))
+	// fmt.Println(functions.Atoi("++1234"))
+	// fmt.Println(functions.Atoi("--1234"))
+	// fmt.Println(functions.Atoi("-9223372036854775808"))
+
+	//AtoiBase
+	// fmt.Println(functions.AtoiBase("4506C", "0123456789ABCDEF"))
+	// fmt.Println(functions.AtoiBase("0001", "01"))
+	// fmt.Println(functions.AtoiBase("00", "01"))
+	// fmt.Println(functions.AtoiBase("saDt!I!sI", "CHOUMIisDAcat!"))
+	// fmt.Println(functions.AtoiBase("AAho?Ao", "WhoAmI?"))
+	// fmt.Println(functions.AtoiBase("thisinputshouldnotmatter", "abca"))
+
+	//SplitWhiteSpaces
+	// fmt.Println(functions.SplitWhiteSpaces("The earliest foundations of what would become computer science predate the invention of the modern digital computer"))
+	// fmt.Println(functions.SplitWhiteSpaces("Machines for calculating fixed numerical tasks such as the abacus have existed since antiquity"))
+	// fmt.Println(functions.SplitWhiteSpaces("aiding in computations such as multiplication and division ."))
+	// fmt.Println(functions.SplitWhiteSpaces("Algorithms for performing computations have existed since antiquity, even before the development of sophisticated computing equipment."))
+	// fmt.Println(functions.SplitWhiteSpaces("Wilhelm Schickard designed and constructed the first working mechanical calculator in 1623.[4]"))
+	// fmt.Println(functions.SplitWhiteSpaces("In 1673, Gottfried Leibniz demonstrated a digital mechanical calculator,"))
+
+	//Split
+	// s := " !==!which!==!was!==!making!==!all!==!kinds!==!of!==!punched!==!card!==!equipment!==!and!==!was!==!also!==!in!==!the!==!calculator!==!business[10]!==!to!==!develop!==!his!==!giant!==!programmable!==!calculator,"
+	// fmt.Println(functions.Split(s, "!==!"))
+	// st := " AFJCharlesAFJBabbageAFJstartedAFJtheAFJdesignAFJofAFJtheAFJfirstAFJautomaticAFJmechanicalAFJcalculator,"
+	// fmt.Println(functions.Split(st, "AFJ"))
+	// sb := " <<==123==>>In<<==123==>>1820,<<==123==>>Thomas<<==123==>>de<<==123==>>Colmar<<==123==>>launched<<==123==>>the<<==123==>>mechanical<<==123==>>calculator<<==123==>>industry[note<<==123==>>1]<<==123==>>when<<==123==>>he<<==123==>>released<<==123==>>his<<==123==>>simplified<<==123==>>arithmometer,"
+	// fmt.Println(functions.Split(sb, "<<==123==>>"))
+
+	//ConvertBase
+	// result1 := functions.ConvertBase("4506C", "0123456789ABCDEF", "choumi")
+	// fmt.Println(result1)
+	// result2 := functions.ConvertBase("babcbaaaaabcb", "abc", "0123456789ABCDEF")
+	// fmt.Println(result2)
+	// result3 := functions.ConvertBase("256850", "0123456789", "01")
+	// fmt.Println(result3)
+	// result4 := functions.ConvertBase("uuhoumo", "choumi", "Zone01")
+	// fmt.Println(result4)
+	// result5 := functions.ConvertBase("683241", "0123456789", "0123456789")
+	// fmt.Println(result5)
+
+	//PrinrNbrBase
+
+	// functions.PrintNbrBase(-125, "01")
+	// z01.PrintRune('\n')
+	// functions.PrintNbrBase(125, "0123456789ABCDEF")
+	// z01.PrintRune('\n')
+	// functions.PrintNbrBase(919617, "01")
+	// z01.PrintRune('\n')
+	// functions.PrintNbrBase(753639, "CHOUMIisDAcat!")
+	// z01.PrintRune('\n')
+	// functions.PrintNbrBase(-174336, "CHOUMIisDAcat!")
+	// z01.PrintRune('\n')
+	// functions.PrintNbrBase(-661165, "1")
+	// z01.PrintRune('\n')
+	// functions.PrintNbrBase(-661165, "Zone01Zone01")
+	// z01.PrintRune('\n')
+	// functions.PrintNbrBase(-661165, "")
+	// z01.PrintRune('\n')
 }
