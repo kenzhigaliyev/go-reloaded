@@ -11,52 +11,67 @@ import (
 
 func main() {
 	arguments := os.Args[1:]
-	var new int
-	arg, number, arr, positive := IsValid(arguments)
-	positive = positive
+	arg, number, arr, minus := IsValid(arguments)
 	if arg == false {
 		fmt.Printf("tail: option requires an argument -- 'c'\nTry 'tail --help' for more information.\n")
 		return
 	}
-	// fmt.Println(number)
-	number = number
 	for index, value := range arr {
 		file, err := os.Open(value)
 		if err != nil {
 			fmt.Printf("tail: cannot open '%s' for reading: No such file or directory", value)
 			z01.PrintRune('\n')
-			os.Exit(1)
+			if index == len(arr) {
+				os.Exit(0)
+			} else {
+				continue
+			}
 		}
 		info, err := file.Stat()
 		if err != nil {
-
 		}
-		length := uint64(info.Size())
-		fmt.Println(length)
+		length := uint64(info.Size()) - uint64(1)
 		defer file.Close()
-
 		data := make([]byte, length)
-
 		for {
-			n, err := file.Read(data)
+			_, err := file.Read(data)
 			if err == io.EOF { // если конец файла
 				break // выходим из цикла
 			}
-			new = n
 		}
+		// var counter int
 		if len(arr) != 1 {
 			fmt.Printf("==> %s <==", value)
 			z01.PrintRune('\n')
-			if number>length{
-				fmt.Printf(string(data)
+			if number > length {
+				if minus {
+					fmt.Printf(string(data))
+				} else {
+					fmt.Printf("")
+				}
 			} else {
-				fmt.Print(data[:number])
+				if !minus {
+					fmt.Print(string(data[number-1 : length]))
+				} else {
+					fmt.Print(string(data[length-number : length]))
+				}
 			}
 			if index != len(arr)-1 {
 				z01.PrintRune('\n')
 			}
 		} else {
-			fmt.Print(string(data[:new]))
+			if number > length {
+				fmt.Printf(string(data))
+			} else {
+				if !minus {
+					fmt.Print(string(data[number-1 : length]))
+				} else {
+					fmt.Print(string(data[length-number : length]))
+				}
+			}
+			if index != len(arr)-1 {
+				z01.PrintRune('\n')
+			}
 		}
 	}
 }
@@ -75,6 +90,9 @@ func IsValid(arguments []string) (bool, uint64, []string, bool) {
 				index = index + 1
 				result = 0
 			} else if len(arguments[index+1]) < len("18446744073709551615") {
+				result, positive = functions.AtoiUnix(arguments[index+1])
+				index = index + 1
+			} else if len(arguments[index+1]) == len("18446744073709551615") && arguments[index+1] <= "18446744073709551615" {
 				result, positive = functions.AtoiUnix(arguments[index+1])
 				index = index + 1
 			} else {
