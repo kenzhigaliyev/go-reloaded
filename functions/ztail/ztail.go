@@ -31,7 +31,8 @@ func main() {
 		if err != nil {
 
 		}
-		length := info.Size()
+		length := uint64(info.Size())
+		fmt.Println(length)
 		defer file.Close()
 
 		data := make([]byte, length)
@@ -46,7 +47,11 @@ func main() {
 		if len(arr) != 1 {
 			fmt.Printf("==> %s <==", value)
 			z01.PrintRune('\n')
-			fmt.Print(data[:number])
+			if number>length{
+				fmt.Printf(string(data)
+			} else {
+				fmt.Print(data[:number])
+			}
 			if index != len(arr)-1 {
 				z01.PrintRune('\n')
 			}
