@@ -9,9 +9,14 @@ import (
 	"github.com/01-edu/z01"
 )
 
+var errorlar = true
+var filedar = true
+
 func main() {
 	arguments := os.Args[1:]
 	arg, number, arr, minus := IsValid(arguments)
+	// fmt.Println(number, minus)
+
 	if arg == false {
 		fmt.Printf("tail: option requires an argument -- 'c'\nTry 'tail --help' for more information.\n")
 		return
@@ -21,6 +26,7 @@ func main() {
 		if err != nil {
 			fmt.Printf("tail: cannot open '%s' for reading: No such file or directory", value)
 			z01.PrintRune('\n')
+			errorlar = false
 			if index == len(arr) {
 				os.Exit(0)
 			} else {
@@ -30,7 +36,7 @@ func main() {
 		info, err := file.Stat()
 		if err != nil {
 		}
-		length := uint64(info.Size()) - uint64(1)
+		length := uint64(info.Size())
 		defer file.Close()
 		data := make([]byte, length)
 		for {
@@ -40,7 +46,12 @@ func main() {
 			}
 		}
 		// var counter int
+		// fmt.Println(number, minus)
 		if len(arr) != 1 {
+			if !errorlar && !filedar {
+				z01.PrintRune('\n')
+			}
+			filedar = false
 			fmt.Printf("==> %s <==", value)
 			z01.PrintRune('\n')
 			if number > length {
@@ -57,11 +68,18 @@ func main() {
 				}
 			}
 			if index != len(arr)-1 {
-				z01.PrintRune('\n')
+				// z01.PrintRune('\n')
+				// if !errorlar {
+				// 	// z01.PrintRune('\n')
+				// }
 			}
 		} else {
 			if number > length {
-				fmt.Printf(string(data))
+				if minus {
+					fmt.Printf(string(data))
+				} else {
+					fmt.Printf("")
+				}
 			} else {
 				if !minus {
 					fmt.Print(string(data[number-1 : length]))
@@ -70,7 +88,10 @@ func main() {
 				}
 			}
 			if index != len(arr)-1 {
-				z01.PrintRune('\n')
+				// z01.PrintRune('\n')
+				// if !errorlar {
+				// 	// z01.PrintRune('\n')
+				// }
 			}
 		}
 	}

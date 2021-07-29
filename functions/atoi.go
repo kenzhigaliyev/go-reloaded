@@ -49,3 +49,41 @@ func Atoi(s string) int {
 	}
 	return result
 }
+
+func AtoiUnix(s string) (uint64, bool) {
+	length := len(s)
+	minus := true
+	result := uint64(0)
+
+	if length == 0 {
+		return result, minus
+	}
+	number := []rune{}
+	for _, char := range s {
+		number = append(number, char)
+	}
+	if number[0] == '+' {
+		for i := 1; i < length; i++ {
+			if number[i] < '0' || number[i] > '9' {
+				return result, minus
+			}
+		}
+		// sign = -1
+		minus = false
+	} else if number[0] == '-' || (number[0] >= '0' && number[0] <= '9') {
+		for i := 1; i < length; i++ {
+			if number[i] < '0' || number[i] > '9' {
+				return result, minus
+			}
+		}
+	} else {
+		return result, minus
+	}
+	for i := 0; i < length; i++ {
+		if number[i] >= '1' && number[i] <= '9' {
+			result = (result * uint64(10)) + (uint64(number[i]) - 48)
+			// fmt.Println(result, number[i])
+		}
+	}
+	return result, minus
+}
