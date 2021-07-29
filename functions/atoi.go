@@ -50,22 +50,34 @@ func Atoi(s string) int {
 	return result
 }
 
-func AtoiUnix(s string) (uint64, bool) {
+func AtoiUnix(s string) (uint64, bool, bool) {
 	length := len(s)
 	minus := true
 	result := uint64(0)
+	valid := true
 
 	if length == 0 {
-		return result, minus
+		minus = true
+		return result, minus, valid
 	}
 	number := []rune{}
 	for _, char := range s {
 		number = append(number, char)
 	}
-	if number[0] == '+' {
+	if length > 2 && (number[0] == '-' && number[1] == '+') {
+		for i := 2; i < length; i++ {
+			if number[i] < '0' || number[i] > '9' {
+				valid = false
+				return result, minus, valid
+			}
+		}
+		// sign = -1
+		minus = false
+	} else if number[0] == '+' {
 		for i := 1; i < length; i++ {
 			if number[i] < '0' || number[i] > '9' {
-				return result, minus
+				valid = false
+				return result, minus, valid
 			}
 		}
 		// sign = -1
@@ -73,17 +85,20 @@ func AtoiUnix(s string) (uint64, bool) {
 	} else if number[0] == '-' || (number[0] >= '0' && number[0] <= '9') {
 		for i := 1; i < length; i++ {
 			if number[i] < '0' || number[i] > '9' {
-				return result, minus
+				valid = false
+				return result, minus, valid
 			}
 		}
 	} else {
-		return result, minus
+		valid = false
+		return result, minus, valid
 	}
 	for i := 0; i < length; i++ {
-		if number[i] >= '1' && number[i] <= '9' {
+		if number[i] >= '0' && number[i] <= '9' {
 			result = (result * uint64(10)) + (uint64(number[i]) - 48)
 			// fmt.Println(result, number[i])
 		}
 	}
-	return result, minus
+	// fmt.Println("Hi")
+	return result, minus, valid
 }

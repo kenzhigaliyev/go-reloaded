@@ -14,9 +14,10 @@ var filedar = true
 
 func main() {
 	arguments := os.Args[1:]
-	arg, number, arr, minus := IsValid(arguments)
-	// fmt.Println(number, minus)
-
+	arg, number, arr, minus, valid, big := IsValid(arguments)
+	if !valid || big {
+		return
+	}
 	if arg == false {
 		fmt.Printf("tail: option requires an argument -- 'c'\nTry 'tail --help' for more information.\n")
 		return
@@ -45,8 +46,6 @@ func main() {
 				break // выходим из цикла
 			}
 		}
-		// var counter int
-		// fmt.Println(number, minus)
 		if len(arr) != 1 {
 			if !errorlar && !filedar {
 				z01.PrintRune('\n')
@@ -60,19 +59,20 @@ func main() {
 				} else {
 					fmt.Printf("")
 				}
+			} else if number != uint64(0) {
+				if !minus {
+					fmt.Printf(string(data[number-1 : length]))
+				} else {
+					fmt.Printf(string(data[length-number : length]))
+				}
 			} else {
 				if !minus {
-					fmt.Print(string(data[number-1 : length]))
+					continue
 				} else {
-					fmt.Print(string(data[length-number : length]))
+					fmt.Printf(string(data))
 				}
 			}
-			if index != len(arr)-1 {
-				// z01.PrintRune('\n')
-				// if !errorlar {
-				// 	// z01.PrintRune('\n')
-				// }
-			}
+
 		} else {
 			if number > length {
 				if minus {
@@ -80,50 +80,61 @@ func main() {
 				} else {
 					fmt.Printf("")
 				}
+			} else if number != uint64(0) {
+				if !minus {
+					fmt.Printf(string(data[number-1 : length]))
+				} else {
+					fmt.Printf(string(data[length-number : length]))
+				}
 			} else {
 				if !minus {
-					fmt.Print(string(data[number-1 : length]))
+					fmt.Printf(string(data))
 				} else {
-					fmt.Print(string(data[length-number : length]))
+					continue
 				}
-			}
-			if index != len(arr)-1 {
-				// z01.PrintRune('\n')
-				// if !errorlar {
-				// 	// z01.PrintRune('\n')
-				// }
 			}
 		}
 	}
 }
 
-func IsValid(arguments []string) (bool, uint64, []string, bool) {
+func IsValid(arguments []string) (bool, uint64, []string, bool, bool, bool) {
 	var str []string
 	var result uint64
 	var positive bool
+	var valid = true
+	var big = false
 	if len(arguments) == 0 {
-		return false, result, str, positive
+		return false, result, str, positive, valid, big
 	}
 	for index := 0; index < len(arguments); index++ {
 		if arguments[index] == "-c" && index != len(arguments)-1 {
-			// fmt.Println(arguments[index+1])
 			if arguments[index+1] == "0" {
 				index = index + 1
-				result = 0
-			} else if len(arguments[index+1]) < len("18446744073709551615") {
-				result, positive = functions.AtoiUnix(arguments[index+1])
+				result, positive, valid = functions.AtoiUnix(arguments[index+1])
+			} else if len(arguments[index+1]) < len("18446744073709551615") && len(arguments[index+1]) > 0 {
+				result, positive, valid = functions.AtoiUnix(arguments[index+1])
 				index = index + 1
 			} else if len(arguments[index+1]) == len("18446744073709551615") && arguments[index+1] <= "18446744073709551615" {
-				result, positive = functions.AtoiUnix(arguments[index+1])
+				result, positive, valid = functions.AtoiUnix(arguments[index+1])
 				index = index + 1
+			} else if arguments[index+1] == "" {
+				fmt.Printf("tail: invalid number of bytes: ‘’\n")
+				big = true
+				return false, result, str, positive, valid, big
 			} else {
-				return false, result, str, positive
+				fmt.Printf("tail: invalid number of bytes: ‘%s’: Value too large for defined data type\n", arguments[index+1])
+				big = true
+				return false, result, str, positive, valid, big
+			}
+			if !valid {
+				fmt.Printf("tail: invalid number of bytes: ‘%s’\n", arguments[index])
+				return false, result, str, positive, valid, big
 			}
 		} else if arguments[index] == "-c" && index == len(arguments)-1 {
-			return false, result, str, positive
+			return false, result, str, positive, valid, big
 		} else {
 			str = append(str, arguments[index])
 		}
 	}
-	return true, result, str, positive
+	return true, result, str, positive, valid, big
 }
