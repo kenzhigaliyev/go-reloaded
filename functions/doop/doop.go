@@ -34,6 +34,9 @@ func Calculate(num1, num2 int, arg string) (int, int, bool) {
 			return 0, val, sign
 		}
 	} else if arg == "*" {
+		if (num1 == -9223372036854775808 && num2 == -1) || (num2 == -9223372036854775808 && num1 == -1) || (num1 == 0 || num2 == 0) {
+			return 0, val, sign
+		}
 		result = num1 * num2
 		if num1 != result/num2 {
 			return 0, val, sign

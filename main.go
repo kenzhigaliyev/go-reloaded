@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 	"student/functions"
 )
 
@@ -16,26 +17,37 @@ func PrintList(l *functions.List) {
 }
 
 func main() {
-	//AdvancedSort
-	result1 := []string{"The", "earliest", "computing", "device", "undoubtedly", "consisted", "of", "the", "five", "fingers", "of", "each", "hand"}
-	functions.AdvancedSortWordArr(result1, functions.Compare)
-	result2 := []string{"The", "word", "digital", "comesfrom", "\"digits\"", "or", "fingers"}
-	functions.AdvancedSortWordArr(result2, functions.Compare)
-	result3 := []string{"a", "A", "1", "b", "B", "2", "c", "C", "3"}
-	functions.AdvancedSortWordArr(result3, functions.Compare)
-	result4 := []string{"The", "computing", "consisted", "device", "each", "earliest", "fingers", "five", "hand", "of", "of", "the", "undoubtedly"}
-	functions.AdvancedSortWordArr(result4, functions.Compare)
-	result5 := []string{"\"digits\"", "The", "comesfrom", "digital", "fingers", "or", "word"}
-	functions.AdvancedSortWordArr(result5, functions.Compare)
-	result6 := []string{"1", "2", "3", "A", "B", "C", "a", "b", "c"}
-	functions.AdvancedSortWordArr(result6, functions.Compare)
+	//Atoi
+	// fmt.Println(functions.Atoi("12345"))
+	// fmt.Println(functions.Atoi("0000000012345"))
+	// fmt.Println(functions.Atoi("012 345"))
+	// fmt.Println(functions.Atoi("Hello World!"))
+	// fmt.Println(functions.Atoi("+1234"))
+	// fmt.Println(functions.Atoi("-1234"))
+	// fmt.Println(functions.Atoi("++1234"))
+	// fmt.Println(functions.Atoi("--1234"))
+	// fmt.Println(functions.Atoi("-9223372036854775808"))
 
-	fmt.Println(result1)
-	fmt.Println(result2)
-	fmt.Println(result3)
-	fmt.Println(result4)
-	fmt.Println(result5)
-	fmt.Println(result6)
+	//AdvancedSort
+	// result1 := []string{"The", "earliest", "computing", "device", "undoubtedly", "consisted", "of", "the", "five", "fingers", "of", "each", "hand"}
+	// functions.AdvancedSortWordArr(result1, functions.Compare)
+	// result2 := []string{"The", "word", "digital", "comesfrom", "\"digits\"", "or", "fingers"}
+	// functions.AdvancedSortWordArr(result2, functions.Compare)
+	// result3 := []string{"a", "A", "1", "b", "B", "2", "c", "C", "3"}
+	// functions.AdvancedSortWordArr(result3, functions.Compare)
+	// result4 := []string{"The", "computing", "consisted", "device", "each", "earliest", "fingers", "five", "hand", "of", "of", "the", "undoubtedly"}
+	// functions.AdvancedSortWordArr(result4, functions.Compare)
+	// result5 := []string{"\"digits\"", "The", "comesfrom", "digital", "fingers", "or", "word"}
+	// functions.AdvancedSortWordArr(result5, functions.Compare)
+	// result6 := []string{"1", "2", "3", "A", "B", "C", "a", "b", "c"}
+	// functions.AdvancedSortWordArr(result6, functions.Compare)
+
+	// fmt.Println(result1)
+	// fmt.Println(result2)
+	// fmt.Println(result3)
+	// fmt.Println(result4)
+	// fmt.Println(result5)
+	// fmt.Println(result6)
 
 	// nbits := functions.ActiveBits(7)
 	// fmt.Println(nbits)
@@ -182,12 +194,16 @@ func main() {
 	// if selected.Parent != nil {
 	// 	fmt.Println(selectefunctions
 
-	// fmt.Print("Right child of selected item -> ")
-	// if selected.Right != nil {
-	// 	fmt.Println(selected.Right.Data)
-	// } else {
-	// 	fmt.Println("nil")
-	// }
+	// fmt.Print("Right child of selected item -> ")//Atoi
+	// fmt.Println(functions.Atoi("12345"))
+	// fmt.Println(functions.Atoi("0000000012345"))
+	// fmt.Println(functions.Atoi("012 345"))
+	// fmt.Println(functions.Atoi("Hello World!"))
+	// fmt.Println(functions.Atoi("+1234"))
+	// fmt.Println(functions.Atoi("-1234"))
+	// fmt.Println(functions.Atoi("++1234"))
+	// fmt.Println(functions.Atoi("--1234"))
+	// fmt.Println(functions.Atoi("-9223372036854775808"))
 
 	//BTreeTransplant
 	// root := &functions.TreeNode{Data: "4"}
@@ -216,19 +232,16 @@ func main() {
 	// functions.BTreeApplyInorder(root, fmt.Println)
 
 	//Split
-	// 	s := "HAHAHelloHAHAHAHAhowHAareHAyou?HAHA"
-	// 	fmt.Println(functions.Split(s, "HA"))
-
-	//Atoi
-	// fmt.Println(functions.Atoi("12345"))
-	// fmt.Println(functions.Atoi("0000000012345"))
-	// fmt.Println(functions.Atoi("012 345"))
-	// fmt.Println(functions.Atoi("Hello World!"))
-	// fmt.Println(functions.Atoi("+1234"))
-	// fmt.Println(functions.Atoi("-1234"))
-	// fmt.Println(functions.Atoi("++1234"))
-	// fmt.Println(functions.Atoi("--1234"))
-	// fmt.Println(functions.Atoi("-9223372036854775808"))
+	s := "which|=choumi=|itself|=choumi=|used|=choumi=|cards|=choumi=|and|=choumi=|a|=choumi=|central|=choumi=|computing|=choumi=|unit.|=choumi=|When|=choumi=|the|=choumi=|machine|=choumi=|was|=choumi=|finished,"
+	fmt.Println(functions.Split(s, "|=choumi=|"))
+	a := "!==!which!==!was!==!making!==!all!==!kinds!==!of!==!punched!==!card!==!equipment!==!and!==!was!==!also!==!in!==!the!==!calculator!==!business[10]!==!to!==!develop!==!his!==!giant!==!programmable!==!calculator,"
+	fmt.Println(functions.Split(a, "!==!"))
+	fmt.Println(strings.Split(s, "|=choumi=|"))
+	fmt.Println(functions.Split("HAHAHelloHAHowAreYouHAHAHAHere", "HA"))
+	fmt.Println("---------------------------------------------------------------")
+	fmt.Println(strings.Split("HAHAHelloHAHowAreYouHAHAHAHere", "HA"))
+	fmt.Println(functions.Split("aaaaa", "aa"))
+	fmt.Println(strings.Split("aaaaa", "aa"))
 
 	//AtoiBase
 	// fmt.Println(functions.AtoiBase("4506C", "0123456789ABCDEF"))
@@ -284,4 +297,9 @@ func main() {
 	// z01.PrintRune('\n')
 	// functions.PrintNbrBase(-661165, "")
 	// z01.PrintRune('\n')
+
+	//PrintCombn
+	// functions.PrintCombN(1)
+	// functions.PrintCombN(3)
+	// functions.PrintCombN(9)
 }

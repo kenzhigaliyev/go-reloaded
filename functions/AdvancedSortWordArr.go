@@ -12,7 +12,16 @@ func AdvancedSortWordArr(a []string, f func(a, b string) int) {
 	}
 }
 
-func Compare(a, b string) int {
+func Compare1(a, b string) int {
+	if a > b {
+		return 1
+	} else if a == b {
+		return 0
+	}
+	return -1
+}
+
+func Compare2(a, b string) int {
 	if a > b {
 		return 1
 	} else if a == b {

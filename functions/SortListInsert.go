@@ -1,7 +1,6 @@
 package functions
 
 func SortListInsert(l *NodeI, data_ref int) *NodeI {
-	// PrintList(l)
 	new := &NodeI{Data: data_ref}
 	if l == nil || l.Data >= data_ref {
 		new.Next = l

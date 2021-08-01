@@ -41,16 +41,4 @@ func ListPushBackNodeL(l *List, data interface{}) {
 		val = val.Next
 	}
 	val.Next = &NodeL{Data: data}
-
-	// n := &NodeL{Data: data}
-
-	// if l == nil {
-	// 	return n
-	// }
-	// iterator := l
-	// for iterator.Next != nil {
-	// 	iterator = iterator.Next
-	// }
-	// iterator.Next = n
-	// return l
 }
