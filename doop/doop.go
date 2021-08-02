@@ -1,9 +1,6 @@
 package main
 
-import (
-	"os"
-	// "fmt"
-)
+import "os"
 
 func Operation(arg string) bool {
 	if len(arg) == 1 && ((arg == "+") || (arg == "-") || (arg == "*") || (arg == "/") || (arg == "%")) {
@@ -13,18 +10,22 @@ func Operation(arg string) bool {
 }
 
 func Calculate(num1, num2 int, arg string) (int, int, bool) {
-	result := 0
-	val := 0
-	positive := true
-	sign := false
+	result, val, positive, sign := 0, 0, true, false
 	if arg == "+" {
 		if num1 < 0 && num2 < 0 {
 			positive = false
+			result = num1 + num2
+			if (positive && result < 0) || (!positive && result > 0) {
+				return 0, val, sign
+			}
 		}
 		result = num1 + num2
-		if (positive && result < 0) || (!positive && result > 0) {
-			return 0, val, sign
+		if result < 0 {
+			sign = true
+			result = result * -1
 		}
+		return result, val, sign
+
 	} else if arg == "-" {
 		if num1 < num2 {
 			positive = false
@@ -45,7 +46,6 @@ func Calculate(num1, num2 int, arg string) (int, int, bool) {
 		if num1 == -9223372036854775808 && num2 == -1 {
 			return 0, val, sign
 		} else if num1 == -9223372036854775808 && num2 == 1 {
-			// fmt.Println(num1)
 			return num1, val, sign
 		}
 		if num2 == 0 {
@@ -68,14 +68,10 @@ func Calculate(num1, num2 int, arg string) (int, int, bool) {
 }
 
 func Atoi(s string) (int, bool) {
-	length := len(s)
+	result, positive, number, sign, length := 0, true, []rune{}, 1, len(s)
 	if length == 0 {
 		return 0, false
 	}
-	result := 0
-	positive := true
-	number := []rune{}
-	sign := 1
 	for _, char := range s {
 		number = append(number, char)
 	}
