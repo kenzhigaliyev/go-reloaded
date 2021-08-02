@@ -1,4 +1,4 @@
-package functions
+package student
 
 func ActiveBits(n int) int {
 	if n == 0 {

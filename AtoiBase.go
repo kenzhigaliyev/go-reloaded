@@ -1,4 +1,4 @@
-package functions
+package student
 
 func AtoiBase(s string, base string) int {
 	str := []rune{}

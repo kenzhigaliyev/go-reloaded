@@ -1,4 +1,4 @@
-package functions
+package student
 
 func NewLine(root *TreeNode, f func(...interface{}) (int, error), val int) {
 	if root == nil {

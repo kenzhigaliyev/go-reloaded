@@ -1,4 +1,4 @@
-package functions
+package student
 
 func AdvancedSortWordArr(a []string, f func(a, b string) int) {
 	for i := 0; i < len(a); i++ {

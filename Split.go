@@ -1,4 +1,4 @@
-package functions
+package student
 
 func Split(s, sep string) []string {
 	var str = make([]string, 0)

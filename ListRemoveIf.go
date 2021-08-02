@@ -1,4 +1,4 @@
-package functions
+package student
 
 func ListRemoveIf(l *List, data_ref interface{}) {
 	current := l.Head

@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
-	"student/functions"
+	"student"
 
 	"github.com/01-edu/z01"
 )
@@ -117,10 +117,10 @@ func IsValid(arguments []string) (bool, uint64, []string, bool, bool, bool) {
 		if arguments[index] == "-c" && index != len(arguments)-1 {
 			ci = true
 			if len(arguments[index+1]) < len("18446744073709551615") && len(arguments[index+1]) > 0 {
-				result, positive, valid = functions.AtoiUnix(arguments[index+1])
+				result, positive, valid = student.AtoiUnix(arguments[index+1])
 				index = index + 1
 			} else if len(arguments[index+1]) == len("18446744073709551615") && arguments[index+1] <= "18446744073709551615" {
-				result, positive, valid = functions.AtoiUnix(arguments[index+1])
+				result, positive, valid = student.AtoiUnix(arguments[index+1])
 				index = index + 1
 			} else if arguments[index+1] == "" {
 				fmt.Printf("tail: invalid number of bytes: ‘’\n")

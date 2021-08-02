@@ -1,4 +1,4 @@
-package functions
+package student
 
 func SplitWhiteSpaces(s string) []string {
 	var str = []string{}

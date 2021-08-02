@@ -1,4 +1,4 @@
-package functions
+package student
 
 type NodeI struct {
 	Data int

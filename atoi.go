@@ -1,4 +1,4 @@
-package functions
+package student
 
 func Atoi(s string) int {
 	length := len(s)

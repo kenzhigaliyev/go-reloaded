@@ -1,4 +1,4 @@
-package functions
+package student
 
 func SortListInsert(l *NodeI, data_ref int) *NodeI {
 	new := &NodeI{Data: data_ref}

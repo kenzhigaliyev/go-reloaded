@@ -1,4 +1,4 @@
-package functions
+package student
 
 func BTreeDeleteNode(root, node *TreeNode) *TreeNode {
 	if node == nil {

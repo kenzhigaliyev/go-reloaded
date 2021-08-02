@@ -1,4 +1,4 @@
-package functions
+package student
 
 import (
 	"github.com/01-edu/z01"
