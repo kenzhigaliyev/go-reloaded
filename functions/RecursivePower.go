@@ -10,9 +10,3 @@ func RecursivePower(nb int, power int) int {
 	}
 	return nb
 }
-
-// func main() {
-// 	arg1 := 4
-// 	arg2 := 3
-// 	fmt.Println(RecursivePower(arg1, arg2))
-// }

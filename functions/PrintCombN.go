@@ -4,41 +4,71 @@ import (
 	"github.com/01-edu/z01"
 )
 
-var newcounter = 0
-
 func PrintCombN(n int) {
-	if n < 0 {
+	if n < 1 || n > 9 {
 		return
 	}
-	counter := 0
-	combination := ""
-	CombNum(0, n, combination, counter, newcounter)
-	z01.PrintRune('\n')
+	numbers := make([]int, n)
 
+	for index := 0; index < n; index++ {
+		numbers[index] = index
+	}
+
+	for index := 0; index < len(numbers); index++ {
+		z01.PrintRune(rune(numbers[index] + 48))
+	}
+	z01.PrintRune(',')
+	z01.PrintRune(' ')
+
+	for {
+		if numbers[len(numbers)-1] != 9 {
+			numbers[len(numbers)-1]++
+			for index := 0; index < len(numbers); index++ {
+				z01.PrintRune(rune(numbers[index] + 48))
+			}
+			if len(numbers) == 1 && numbers[len(numbers)-1] == 9 {
+				break
+			}
+			z01.PrintRune(',')
+			z01.PrintRune(' ')
+		} else if numbers[0] == 10-n {
+			break
+		} else {
+			numbers = Comb(numbers)
+			for index := 0; index < len(numbers); index++ {
+				z01.PrintRune(rune(numbers[index] + 48))
+			}
+			if 10-n == numbers[0] && 9 == numbers[n-1] {
+				break
+			}
+			z01.PrintRune(',')
+			z01.PrintRune(' ')
+		}
+	}
+	z01.PrintRune('\n')
 }
 
-func CombNum(first int, num int, comb string, counter int, newcounter int) {
-	// newcounter := 0
-	if num != 0 {
-		for i := first; i <= 9; i++ {
-			numbers := comb + (string(i + 48))
-			counter++
-			CombNum(i+1, num-1, numbers, counter, newcounter)
+func Comb(numbers []int) []int {
+	num1, num2 := len(numbers)-2, len(numbers)-1
+	for {
+		if numbers[num1] < numbers[num2] && numbers[num1] != numbers[num2]-1 {
+			numbers[num1]++
+			numbers[num2] = numbers[num1] + 1
+			if num2 == len(numbers)-1 {
+				break
+			}
+			result := numbers[num2] + 1
+			for index := num2 + 1; index < len(numbers); index++ {
+				numbers[index] = result
+				result++
+			}
+			break
+		} else if numbers[num1] == numbers[num2]-1 {
+			if num1 < 1 {
+				break
+			}
+			num1, num2 = num1-1, num2-1
 		}
-
-	} else if num == 0 {
-		// fmt.Println(newcounter)
-		for _, char := range comb {
-			z01.PrintRune(char)
-			newcounter = newcounter + 1
-
-		}
-		// if newcounter < counter {
-		z01.PrintRune(',')
-		z01.PrintRune('!')
-		// }
 	}
-	// fmt.Print(counter)
-	// fmt.Print("---")
-	// fmt.Print(newcounter)
+	return numbers
 }

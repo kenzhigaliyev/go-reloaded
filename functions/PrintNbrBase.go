@@ -35,9 +35,7 @@ func PrintNbrBase(nbr int, base string) {
 		result = base[val:val+1] + result
 		nbr = nbr / len(base)
 	}
-	// fmt.Println(result)
-	// fmt.Println(nbr)
-	// fmt.Println(base[nbr : nbr+1])
+
 	result = base[nbr:nbr+1] + result
 	if !positive {
 		z01.PrintRune('-')

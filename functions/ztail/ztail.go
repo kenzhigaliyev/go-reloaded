@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"io"
 	"os"
 	"student/functions"
 
@@ -42,7 +41,7 @@ func main() {
 		data := make([]byte, length)
 		for {
 			_, err := file.Read(data)
-			if err == io.EOF { // если конец файла
+			if err != nil { // если конец файла
 				break // выходим из цикла
 			}
 		}

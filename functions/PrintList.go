@@ -10,3 +10,13 @@ func PrintList(l *NodeI) {
 	}
 	fmt.Print(nil, "\n")
 }
+
+func PrintListL(l *List) {
+	it := l.Head
+	for it != nil {
+		fmt.Print(it.Data, " -> ")
+		it = it.Next
+	}
+
+	fmt.Print(nil, "\n")
+}
