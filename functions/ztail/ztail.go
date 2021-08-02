@@ -10,6 +10,7 @@ import (
 
 var errorlar = true
 var filedar = true
+var ci = false
 
 func main() {
 	arguments := os.Args[1:]
@@ -52,26 +53,33 @@ func main() {
 			filedar = false
 			fmt.Printf("==> %s <==", value)
 			z01.PrintRune('\n')
-			if number > length {
-				if minus {
-					fmt.Printf(string(data))
-				} else {
-					fmt.Printf("")
-				}
-			} else if number != uint64(0) {
-				if !minus {
-					fmt.Printf(string(data[number-1 : length]))
-				} else {
-					fmt.Printf(string(data[length-number : length]))
+			// fmt.Println(ci)
+			if !ci {
+				fmt.Printf(string(data))
+				if index != len(arr)-1 {
+					z01.PrintRune('\n')
 				}
 			} else {
-				if !minus {
-					continue
+				if number > length {
+					if minus {
+						fmt.Printf(string(data))
+					} else {
+						fmt.Printf("")
+					}
+				} else if number != uint64(0) {
+					if !minus {
+						fmt.Printf(string(data[number-1 : length]))
+					} else {
+						fmt.Printf(string(data[length-number : length]))
+					}
 				} else {
-					fmt.Printf(string(data))
+					if !minus {
+						continue
+					} else {
+						fmt.Printf(string(data))
+					}
 				}
 			}
-
 		} else {
 			if number > length {
 				if minus {
@@ -107,10 +115,8 @@ func IsValid(arguments []string) (bool, uint64, []string, bool, bool, bool) {
 	}
 	for index := 0; index < len(arguments); index++ {
 		if arguments[index] == "-c" && index != len(arguments)-1 {
-			if arguments[index+1] == "0" {
-				index = index + 1
-				result, positive, valid = functions.AtoiUnix(arguments[index+1])
-			} else if len(arguments[index+1]) < len("18446744073709551615") && len(arguments[index+1]) > 0 {
+			ci = true
+			if len(arguments[index+1]) < len("18446744073709551615") && len(arguments[index+1]) > 0 {
 				result, positive, valid = functions.AtoiUnix(arguments[index+1])
 				index = index + 1
 			} else if len(arguments[index+1]) == len("18446744073709551615") && arguments[index+1] <= "18446744073709551615" {

@@ -42,6 +42,12 @@ func Calculate(num1, num2 int, arg string) (int, int, bool) {
 			return 0, val, sign
 		}
 	} else if arg == "/" {
+		if num1 == -9223372036854775808 && num2 == -1 {
+			return 0, val, sign
+		} else if num1 == -9223372036854775808 && num2 == 1 {
+			// fmt.Println(num1)
+			return num1, val, sign
+		}
 		if num2 == 0 {
 			val = val + 1
 			return result, val, sign
@@ -112,6 +118,9 @@ func Atoi(s string) (int, bool) {
 }
 
 func IntToStr(number int, sign bool) string {
+	if number == -9223372036854775808 {
+		return "-9223372036854775808"
+	}
 	new := ""
 	for number > 10 {
 		result := number % 10

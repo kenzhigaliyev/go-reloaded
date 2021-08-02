@@ -1,14 +1,18 @@
 package functions
 
 func Split(s, sep string) []string {
-	var str = []string{}
+	var str = make([]string, 0)
 	var begin int
 	length := len(sep)
-	for index := 0; index < len(s)-length; index++ {
+	if sep == "" {
+		for _, val := range s {
+			str = append(str, string(val))
+		}
+		return str
+	}
+	for index := 0; index <= len(s)-length; index++ {
 		if s[index:index+length] == sep {
-			// if s[begin:index] != "" {
 			str = append(str, s[begin:index])
-			// }
 			begin = index + length
 			index = index + length - 1
 		}
