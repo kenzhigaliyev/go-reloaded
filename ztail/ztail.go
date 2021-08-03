@@ -47,8 +47,11 @@ func main() {
 			}
 		}
 		if len(arr) != 1 {
-			if !errorlar && !filedar {
+			if (!errorlar && !filedar) || (index != 0 && !filedar) {
 				z01.PrintRune('\n')
+			}
+			if number == uint64(0) && minus {
+				return
 			}
 			filedar = false
 			fmt.Printf("==> %s <==", value)
@@ -73,13 +76,14 @@ func main() {
 						fmt.Printf(string(data[length-number : length]))
 					}
 				} else {
-					if !minus {
+					if minus {
 						continue
 					} else {
 						fmt.Printf(string(data))
 					}
 				}
 			}
+
 		} else {
 			if number > length {
 				if minus {

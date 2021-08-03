@@ -72,8 +72,8 @@ func AtoiUnix(s string) (uint64, bool, bool) {
 			}
 		}
 		// sign = -1
-		minus = false
-	} else if number[0] == '+' {
+		minus = true
+	} else if number[0] == '+' && length != 1 {
 		for i := 1; i < length; i++ {
 			if number[i] < '0' || number[i] > '9' {
 				valid = false
@@ -82,7 +82,7 @@ func AtoiUnix(s string) (uint64, bool, bool) {
 		}
 		// sign = -1
 		minus = false
-	} else if number[0] == '-' || (number[0] >= '0' && number[0] <= '9') {
+	} else if (number[0] == '-' && length != 1) || (number[0] >= '0' && number[0] <= '9') {
 		for i := 1; i < length; i++ {
 			if number[i] < '0' || number[i] > '9' {
 				valid = false

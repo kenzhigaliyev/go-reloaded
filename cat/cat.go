@@ -14,7 +14,7 @@ func main() {
 		for _, value := range arguments {
 			info, err := ioutil.ReadFile(value)
 			if err != nil {
-				fmt.Println("ERROR:" + value)
+				fmt.Printf("cat: %s: No such file or directory\n", value)
 			}
 			fmt.Print(string(info))
 		}
