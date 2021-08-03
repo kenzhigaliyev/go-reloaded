@@ -18,6 +18,11 @@ func Calculate(num1, num2 int, arg string) (int, int, bool) {
 			if (positive && result < 0) || (!positive && result > 0) {
 				return 0, val, sign
 			}
+		} else if num1 > 0 && num2 > 0 {
+			result = num1 + num2
+			if result < 0 {
+				return 0, val, sign
+			}
 		}
 		result = num1 + num2
 		if result < 0 {
