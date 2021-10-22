@@ -14,7 +14,7 @@ func PrintNbrBase(nbr int, base string) {
 	}
 	if nbr < 0 {
 		positive = false
-		nbr = nbr * -1
+		// nbr = nbr * -1
 	}
 	for index, char1 := range base {
 		if char1 == '-' || char1 == '+' {
@@ -30,13 +30,25 @@ func PrintNbrBase(nbr int, base string) {
 			}
 		}
 	}
-	for nbr >= len(base) {
-		val := nbr % len(base)
-		result = base[val:val+1] + result
-		nbr = nbr / len(base)
+	if nbr > 0 {
+		for nbr >= len(base) {
+			val := nbr % len(base)
+			result = base[val:val+1] + result
+			nbr = nbr / len(base)
+		}
+		result = base[nbr:nbr+1] + result
+	} else if nbr < 0 {
+		for nbr <= -len(base) {
+			val := nbr % len(base)
+			if val < 0 {
+				val = val * -1
+			}
+			result = base[val:val+1] + result
+			nbr = nbr / len(base)
+		}
+		result = base[-nbr:-nbr+1] + result
 	}
 
-	result = base[nbr:nbr+1] + result
 	if !positive {
 		z01.PrintRune('-')
 	}

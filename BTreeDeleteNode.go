@@ -19,13 +19,11 @@ func BTreeDeleteNode(root, node *TreeNode) *TreeNode {
 			return new
 		} else {
 			new := BTreeMin(root.Right)
-
 			root.Data = new.Data
 			root.Right = BTreeDeleteNode(root.Right, new)
 		}
 	}
 	return root
-
 }
 
 func BTreeMin(root *TreeNode) *TreeNode {

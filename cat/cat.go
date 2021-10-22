@@ -1,9 +1,10 @@
 package main
 
 import (
-	"fmt"
 	"io/ioutil"
 	"os"
+
+	"github.com/01-edu/z01"
 )
 
 func main() {
@@ -14,9 +15,15 @@ func main() {
 		for _, value := range arguments {
 			info, err := ioutil.ReadFile(value)
 			if err != nil {
-				fmt.Printf("cat: %s: No such file or directory\n", value)
+				for _, val := range "cat: " + err.Error()[5:] {
+					z01.PrintRune(val)
+				}
+				z01.PrintRune('\n')
+			} else {
+				for _, val := range info {
+					z01.PrintRune(rune(val))
+				}
 			}
-			fmt.Print(string(info))
 		}
 	}
 }

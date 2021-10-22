@@ -1,11 +1,5 @@
 package main
 
-import (
-	"fmt"
-	"strings"
-	"student"
-)
-
 func main() {
 	//Atoi
 	// fmt.Println(student.Atoi("12345"))
@@ -54,6 +48,16 @@ func main() {
 	// z01.PrintRune('\n')
 	// student.PrintNbrBase(-661165, "")
 	// z01.PrintRune('\n')
+	// student.PrintNbrBase(-952233720368508, "0123456789ABCDEF")
+	// z01.PrintRune('\n')
+	// student.PrintNbrBase(9223372036854775807, "01")
+	// z01.PrintRune('\n')
+	// student.PrintNbrBase(-9223372036854775808, "01")
+	// z01.PrintRune('\n')
+	// student.PrintNbrBase(-9223372036854775807, "01")
+	// z01.PrintRune('\n')
+	// student.PrintNbrBase(-9223372036854775808, "0123456789ABCDEF")
+	// z01.PrintRune('\n')
 
 	//AtoiBase
 	// fmt.Println(student.AtoiBase("bcbbbbaab", "abc"))
@@ -89,8 +93,8 @@ func main() {
 	// fmt.Println(student.Split(st, "AFJ"))
 	// sb := " <<==123==>>In<<==123==>>1820,<<==123==>>Thomas<<==123==>>de<<==123==>>Colmar<<==123==>>launched<<==123==>>the<<==123==>>mechanical<<==123==>>calculator<<==123==>>industry[note<<==123==>>1]<<==123==>>when<<==123==>>he<<==123==>>released<<==123==>>his<<==123==>>simplified<<==123==>>arithmometer,"
 	// fmt.Println(student.Split(sb, "<<==123==>>"))
-	fmt.Println(len(strings.Split("aa", "")))
-	fmt.Println(len(student.Split("aa", "")))
+	// fmt.Println(strings.Split("aa", ""))
+	// fmt.Println(student.Split("aa", ""))
 
 	//ConvertBase
 	// result1 := student.ConvertBase("4506C", "0123456789ABCDEF", "choumi")
